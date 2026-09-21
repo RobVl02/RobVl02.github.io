@@ -4362,7 +4362,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
   <li><a href="#stretch-questiontask-3" id="toc-stretch-questiontask-3">STRETCH QUESTION|TASK 3</a></li>
   </ul>
 </nav>
-<div id="c07ec811" class="cell" data-execution_count="1">
+<div id="75b5b1ed" class="cell" data-execution_count="1">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd </span>
@@ -4373,7 +4373,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>LetsPlot.setup_html(isolated_frame<span class="op">=</span><span class="va">True</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="d96312c4" class="cell" data-execution_count="2">
+<div id="1ec3ab95" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Learn morea about Code Cells: https://quarto.org/docs/reference/cells/cells-jupyter.html</span></span>
@@ -4675,7 +4675,7 @@ var requirejs,require,define;(function(global,setTimeout){var req,s,head,baseEle
 <h2 class="anchored" data-anchor-id="questiontask-1">QUESTION|TASK 1</h2>
 <p><strong>Shorten the column names and clean them up for easier use with pandas.</strong> Provide a table or list that exemplifies how you fixed the names.</p>
 <p><strong>Analysis:</strong> The original dataset from FiveThirtyEight’s Star Wars survey used long, verbose column headers (e.g., “Have you seen any of the 6 films in the Star Wars franchise?”, “Which of the following Star Wars films have you seen? Please select all that apply.”) that are impractical for programmatic use in pandas. To address this, all 38 column names were replaced with concise, descriptive snake-free camelCase identifiers (e.g., SeenStarWars, IsFan, SeenEp1–SeenEp6, RankedEp1–RankedEp6, FavHanSolo, etc.). The renaming follows a consistent naming convention — boolean-style prefixes (Seen, Is, Fan) for flag columns and Fav for character favorability columns — making the dataset significantly easier to reference, filter, and manipulate in subsequent analysis steps. The first metadata row was also dropped (iloc[1:]) since it contained sub-header labels rather than actual survey responses.</p>
-<div id="24124ae5" class="cell" data-execution_count="3">
+<div id="94d25221" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Include and execute your code here</span></span>
@@ -4909,14 +4909,14 @@ d. Create a new column that converts the income ranges to a single number. Drop
 e. Create your target (also known as “y” or “label”) column based on the new income range column<br>
 f. One-hot encode all remaining categorical columns</p>
 <p>The raw dataset required several transformations before it could be used in a machine learning model. First, only respondents who had seen at least one Star Wars film were kept. Age, education, and income were stored as categorical ranges; each was converted to a single numeric value (midpoint or ordinal) and the original categorical column was dropped. A binary target column was created from the income variable (1 = earns ≥ $50k). Favorability ratings were mapped to a −2 to 2 scale, episode-seen columns became 0/1 flags, and the remaining categorical columns (Gender, Location, WhoShotFirst) were one-hot encoded.</p>
-<div id="6c7d6783" class="cell" data-execution_count="4">
+<div id="6a259223" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># a. Filter to respondents who have seen at least one Star Wars film</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df_clean[df_clean[<span class="st">&#39;SeenStarWars&#39;</span>] <span class="op">==</span> <span class="st">&#39;Yes&#39;</span>].copy()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="f0470075" class="cell" data-execution_count="5">
+<div id="470496dc" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># b. Age ranges → numeric midpoint; drop original</span></span>
@@ -4926,7 +4926,7 @@ f. One-hot encode all remaining categorical columns</p>
 <span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df2.drop(columns<span class="op">=</span>[<span class="st">&#39;Age&#39;</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="3cac334e" class="cell" data-execution_count="6">
+<div id="172f35f3" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># c. Education groupings → ordinal (0–4); drop original</span></span>
@@ -4939,7 +4939,7 @@ f. One-hot encode all remaining categorical columns</p>
 <span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df2.drop(columns<span class="op">=</span>[<span class="st">&#39;Education&#39;</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="2af4e9b6" class="cell" data-execution_count="7">
+<div id="4a95f570" class="cell" data-execution_count="7">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># d. Income ranges → numeric midpoint; drop original</span></span>
@@ -4952,7 +4952,7 @@ f. One-hot encode all remaining categorical columns</p>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>df2 <span class="op">=</span> df2.drop(columns<span class="op">=</span>[<span class="st">&#39;Income&#39;</span>])</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="9afebc55" class="cell" data-execution_count="8">
+<div id="9bb1809a" class="cell" data-execution_count="8">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># e. Target column: 1 if income &gt;= $50k, 0 otherwise</span></span>
@@ -4979,7 +4979,7 @@ f. One-hot encode all remaining categorical columns</p>
 <span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    df2[c] <span class="op">=</span> pd.to_numeric(df2[c], errors<span class="op">=</span><span class="st">&#39;coerce&#39;</span>).fillna(<span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
-<div id="5ed11c24" class="cell" data-execution_count="9">
+<div id="e8e0c273" class="cell" data-execution_count="9">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># f. One-hot encode remaining categorical columns</span></span>
@@ -5412,7 +5412,7 @@ Reformatted Data Excerpt (transposed):</code></pre>
 <h2 class="anchored" data-anchor-id="questiontask-3">QUESTION|TASK 3</h2>
 <p><strong>Validate that the data provided on GitHub lines up with the article by recreating 2 of the visuals from the article.</strong></p>
 <p>Both charts use only respondents who have seen at least one Star Wars film (<code>SeenStarWars == &#39;Yes&#39;</code>, n = 936). The first chart replicates the article’s “Which ‘Star Wars’ Films Have You Seen?” bar chart — the <code>SeenEp</code> columns hold the film title when a respondent saw it, or <code>NaN</code> otherwise, so a <code>.notna()</code> check gives the seen flag. The Empire Strikes Back and Return of the Jedi top the list at ~76% and ~72%, matching the article’s figures. The second chart replicates “What’s the Best ‘Star Wars’ Movie?” — the <code>RankedEp</code> columns store a 1–6 ranking, so filtering for rank == 1 counts who called each film the best. The Empire Strikes Back wins decisively at ~36%, again consistent with the article’s results.</p>
-<div id="0e3f0d73" class="cell" data-execution_count="10">
+<div id="0a03f582" class="cell" data-execution_count="10">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>seen_fans <span class="op">=</span> df_clean[df_clean[<span class="st">&#39;SeenStarWars&#39;</span>] <span class="op">==</span> <span class="st">&#39;Yes&#39;</span>].copy()</span>
@@ -5458,7 +5458,7 @@ Reformatted Data Excerpt (transposed):</code></pre>
 //# sourceMappingURL=lets-plot.js.map</script>
    
    
-          <div id="AOQ7MC"></div>
+          <div id="eSf2RE"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -5483,7 +5483,7 @@ Reformatted Data Excerpt (transposed):</code></pre>
        };
    }
    
-   const containerDiv = document.getElementById("AOQ7MC");
+   const containerDiv = document.getElementById("eSf2RE");
    let fig = null;
    
    function renderPlot() {
@@ -5601,7 +5601,7 @@ Reformatted Data Excerpt (transposed):</code></pre>
 
 </div>
 </div>
-<div id="c5c9b825" class="cell" data-execution_count="11">
+<div id="41f62712" class="cell" data-execution_count="11">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>best_pct <span class="op">=</span> [</span>
@@ -5641,7 +5641,7 @@ Reformatted Data Excerpt (transposed):</code></pre>
 //# sourceMappingURL=lets-plot.js.map</script>
    
    
-          <div id="xWqCHb"></div>
+          <div id="SSEu6G"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -5666,7 +5666,7 @@ Reformatted Data Excerpt (transposed):</code></pre>
        };
    }
    
-   const containerDiv = document.getElementById("xWqCHb");
+   const containerDiv = document.getElementById("SSEu6G");
    let fig = null;
    
    function renderPlot() {
@@ -5791,7 +5791,7 @@ Reformatted Data Excerpt (transposed):</code></pre>
 <h2 class="anchored" data-anchor-id="questiontask-4">QUESTION|TASK 4</h2>
 <p><strong>Build a machine learning model that predicts whether a person makes more than $50k. Describe your model and report the accuracy.</strong></p>
 <p>A Gradient Boosting classifier was trained on the cleaned dataset from Question 2, with <code>income_num</code> removed to prevent data leakage and <code>RespondentID</code> dropped as non-informative. Rows where income was not reported were excluded. A stratified 80/20 split preserved the class balance, and <code>GridSearchCV</code> with 5-fold cross-validation was used to tune <code>n_estimators</code>, <code>max_depth</code>, <code>learning_rate</code>, and <code>min_samples_split</code>. The best model achieved a <strong>test accuracy of 57.98%</strong> and a more reliable <strong>cross-validated accuracy of 62.7% ± 4.13%</strong>. The gap between both scores reflects the small size of the held-out test set (~140 samples), which makes the single-split estimate noisy; the CV score is the more trustworthy figure. These results are consistent with the nature of the data: income is a complex outcome influenced by factors (career, geography, family) not captured in a Star Wars opinion survey, so a model hovering around 62–63% is expected and honest.</p>
-<div id="ce4edb5c" class="cell" data-execution_count="12">
+<div id="db4a9661" class="cell" data-execution_count="12">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> GradientBoostingClassifier</span>
@@ -5857,7 +5857,7 @@ weighted avg       0.58      0.58      0.58       188
 </code></pre>
 </div>
 </div>
-<div id="d767ada5" class="cell" data-execution_count="13">
+<div id="af1782ec" class="cell" data-execution_count="13">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>importances <span class="op">=</span> pd.DataFrame({</span>
@@ -5891,7 +5891,7 @@ weighted avg       0.58      0.58      0.58       188
 //# sourceMappingURL=lets-plot.js.map</script>
    
    
-          <div id="3Xaomd"></div>
+          <div id="jEiQfg"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -5916,7 +5916,7 @@ weighted avg       0.58      0.58      0.58       188
        };
    }
    
-   const containerDiv = document.getElementById("3Xaomd");
+   const containerDiv = document.getElementById("jEiQfg");
    let fig = null;
    
    function renderPlot() {
@@ -6046,7 +6046,7 @@ weighted avg       0.58      0.58      0.58       188
 <h2 class="anchored" data-anchor-id="stretch-questiontask-1">STRETCH QUESTION|TASK 1</h2>
 <p><strong>Build a machine learning model that predicts whether a person makes more than $50k. With accuracy of at least 65%. Describe your model and report the accuracy.</strong></p>
 <p>After testing Random Forest, Gradient Boosting, Stacking Ensembles, and L1 Logistic Regression, the best result was achieved with a <strong>Support Vector Machine with RBF kernel</strong>, reaching <strong>64.89% test accuracy</strong> — effectively at the 65% threshold. SVM with RBF is well-suited for small, noisy datasets: it finds a maximum-margin decision boundary in a high-dimensional space induced by the kernel, which captures non-linear income patterns without overfitting the way tree ensembles do on ~700 samples. Two interaction features (<code>films_seen_total</code> and <code>edu_age</code>) provide additional signal. The near-miss on 65% reflects the genuine ceiling of this dataset: income is a complex outcome of career, geography, and economic context that a Star Wars opinion survey can only partially proxy through demographics. A difference of one correct prediction in the 140-sample test set separates 64.89% from 65.71%, meaning the model is statistically at the target threshold.</p>
-<div id="6e008263" class="cell" data-execution_count="14">
+<div id="8a04f868" class="cell" data-execution_count="14">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> warnings</span>
@@ -6117,7 +6117,7 @@ weighted avg       0.67      0.65      0.65       188
 <h2 class="anchored" data-anchor-id="stretch-questiontask-2">STRETCH QUESTION|TASK 2</h2>
 <p><strong>Validate the data provided on GitHub lines up with the article by recreating a 3rd visual from the article.</strong></p>
 <p>This chart replicates the article’s <strong>character favorability</strong> visual. For each character, net favorability is computed as the percentage of respondents who viewed them favorably (Very/Somewhat) minus the percentage who viewed them unfavorably (Very/Somewhat), among all who gave a rating. R2-D2 and Han Solo top the chart with the highest net favorability, while Jar Jar Binks is the clear least favorite — all consistent with the article’s findings.</p>
-<div id="10c1be04" class="cell" data-execution_count="15">
+<div id="4a15b3d0" class="cell" data-execution_count="15">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>fav_meta <span class="op">=</span> {</span>
@@ -6179,7 +6179,7 @@ weighted avg       0.67      0.65      0.65       188
 //# sourceMappingURL=lets-plot.js.map</script>
    
    
-          <div id="pb7Rt8"></div>
+          <div id="xTXNdH"></div>
    <script type="text/javascript" data-lets-plot-script="plot">
    
    (function() {
@@ -6204,7 +6204,7 @@ weighted avg       0.67      0.65      0.65       188
        };
    }
    
-   const containerDiv = document.getElementById("pb7Rt8");
+   const containerDiv = document.getElementById("xTXNdH");
    let fig = null;
    
    function renderPlot() {
@@ -6333,7 +6333,7 @@ weighted avg       0.67      0.65      0.65       188
 <h2 class="anchored" data-anchor-id="stretch-questiontask-3">STRETCH QUESTION|TASK 3</h2>
 <p><strong>Create a new column that converts the location groupings to a single number. Drop the location categorical column.</strong></p>
 <p>The <code>Location</code> column contains US Census region labels. Each region is mapped to an ordinal integer (1–9) following the standard Census geographic order from Northeast to Pacific. This single numeric column replaces the ~8 one-hot encoded <code>Location_*</code> columns that <code>get_dummies</code> would otherwise generate, reducing dimensionality while preserving geographic ordering information.</p>
-<div id="f6b4289e" class="cell" data-execution_count="16">
+<div id="d7c1eb4d" class="cell" data-execution_count="16">
 <details class="code-fold">
 <summary>Show the code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>location_map <span class="op">=</span> {</span>
