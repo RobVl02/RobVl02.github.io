@@ -46,6 +46,15 @@ body {
   animation: fadeIn 4s ease-in-out forwards;
   text-align: center;
 }
+.titulo .subfrase {
+  display: block;
+  margin-top: 10px;
+  color: #fff6c7;
+  font-size: .72em;
+  font-weight: 400;
+  line-height: 1.35;
+  text-shadow: 0 0 12px rgba(255, 222, 76, .5);
+}
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -1729,7 +1738,9 @@ body.revealed .music-control { display: grid; }
     <button id="music-control" class="music-control" type="button" aria-label="Silenciar música">♪</button>
     <h1 class="titulo">
       Las flores amarillas simbolizan la felicidad. <br>
-       Tú eres la mía❤️</h1>
+       Tú eres la mía ❤️
+       <span class="subfrase">Ya te entregué las virtuales; faltan las presenciales 💛</span>
+    </h1>
   
     <div class="night"></div>
     <div class="flowers">
@@ -2049,7 +2060,12 @@ body.revealed .music-control { display: grid; }
         let masterGain;
         let playing = false;
         let musicTimer;
-        const melody = [261.63, 329.63, 392, 523.25, 440, 392, 329.63, 293.66];
+        const chords = [
+          [261.63, 329.63, 392.00, 523.25],
+          [220.00, 261.63, 329.63, 440.00],
+          [174.61, 220.00, 261.63, 349.23],
+          [196.00, 246.94, 293.66, 392.00]
+        ];
 
         function startMusic() {
           if (playing) return;
@@ -2063,22 +2079,35 @@ body.revealed .music-control { display: grid; }
           audioContext.resume();
           playing = true;
           musicButton.textContent = '♪';
-          let note = 0;
-          const playNote = () => {
-            if (!playing) return;
+          let chordIndex = 0;
+          const pluck = (frequency, when, volume = .11) => {
             const oscillator = audioContext.createOscillator();
+            const filter = audioContext.createBiquadFilter();
             const gain = audioContext.createGain();
-            oscillator.type = 'sine';
-            oscillator.frequency.value = melody[note++ % melody.length];
-            gain.gain.setValueAtTime(.001, audioContext.currentTime);
-            gain.gain.exponentialRampToValueAtTime(.16, audioContext.currentTime + .06);
-            gain.gain.exponentialRampToValueAtTime(.001, audioContext.currentTime + 1.1);
-            oscillator.connect(gain).connect(masterGain);
-            oscillator.start();
-            oscillator.stop(audioContext.currentTime + 1.15);
-            musicTimer = window.setTimeout(playNote, 560);
+            oscillator.type = 'triangle';
+            oscillator.frequency.setValueAtTime(frequency, when);
+            oscillator.detune.setValueAtTime(-5 + Math.random() * 10, when);
+            filter.type = 'lowpass';
+            filter.frequency.setValueAtTime(2100, when);
+            filter.frequency.exponentialRampToValueAtTime(750, when + .48);
+            gain.gain.setValueAtTime(.001, when);
+            gain.gain.exponentialRampToValueAtTime(volume, when + .012);
+            gain.gain.exponentialRampToValueAtTime(.001, when + .5);
+            oscillator.connect(filter).connect(gain).connect(masterGain);
+            oscillator.start(when);
+            oscillator.stop(when + .55);
           };
-          playNote();
+          const playBar = () => {
+            if (!playing) return;
+            const now = audioContext.currentTime + .03;
+            const chord = chords[chordIndex++ % chords.length];
+            chord.forEach((frequency, i) => pluck(frequency, now + i * .035, .105));
+            pluck(chord[2] * 2, now + .34, .075);
+            chord.slice().reverse().forEach((frequency, i) => pluck(frequency, now + .58 + i * .03, .085));
+            pluck(chord[1] * 2, now + .88, .065);
+            musicTimer = window.setTimeout(playBar, 1120);
+          };
+          playBar();
         }
 
         function stopMusic() {
